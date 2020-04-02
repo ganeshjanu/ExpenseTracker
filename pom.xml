@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.friends</groupId>
 	<artifactId>expensetracker</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>ExpenseTracker</name>
 	<description>Spring boot Web based project</description>
 
