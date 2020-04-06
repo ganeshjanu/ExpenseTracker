@@ -1,0 +1,80 @@
+2020-04-06 17:18:44.969-EDT INFO  Starting EmployeeApplication on WKSWUMTV6079 with PID 17532 (C:\Users\312199\Downloads\employee\target\classes started by 312199 in C:\Users\312199\Downloads\employee)
+2020-04-06 17:18:44.995-EDT DEBUG Running with Spring Boot v2.1.13.RELEASE, Spring v5.1.14.RELEASE
+2020-04-06 17:18:44.995-EDT INFO  The following profiles are active: local
+2020-04-06 17:18:48.767-EDT INFO  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-06 17:18:48.985-EDT INFO  Finished Spring Data repository scanning in 191ms. Found 1 JPA repository interfaces.
+2020-04-06 17:18:53.610-EDT INFO  Tomcat initialized with port(s): 8080 (http)
+2020-04-06 17:18:53.769-EDT INFO  Starting service [Tomcat]
+2020-04-06 17:18:53.865-EDT INFO  Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-06 17:18:54.738-EDT INFO  Initializing Spring embedded WebApplicationContext
+2020-04-06 17:18:54.738-EDT INFO  Root WebApplicationContext: initialization completed in 9467 ms
+2020-04-06 17:18:55.496-EDT INFO  HikariPool-1 - Starting...
+2020-04-06 17:18:56.267-EDT INFO  HikariPool-1 - Start completed.
+2020-04-06 17:18:56.372-EDT INFO  HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-04-06 17:18:56.490-EDT INFO  HHH000412: Hibernate Core {5.3.15.Final}
+2020-04-06 17:18:56.492-EDT INFO  HHH000206: hibernate.properties not found
+2020-04-06 17:18:56.854-EDT INFO  HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-04-06 17:18:57.227-EDT INFO  HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-04-06 17:18:59.493-EDT INFO  Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-06 17:19:03.727-EDT INFO  Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-06 17:19:04.203-EDT WARN  spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-06 17:19:06.034-EDT INFO  Tomcat started on port(s): 8080 (http) with context path '/v01/api'
+2020-04-06 17:19:06.045-EDT INFO  Started EmployeeApplication in 22.999 seconds (JVM running for 25.17)
+2020-04-06 17:46:52.154-EDT INFO  Starting EmployeeApplication on WKSWUMTV6079 with PID 33832 (C:\Users\312199\Downloads\employee\target\classes started by 312199 in C:\Users\312199\Downloads\employee)
+2020-04-06 17:46:52.164-EDT DEBUG Running with Spring Boot v2.1.13.RELEASE, Spring v5.1.14.RELEASE
+2020-04-06 17:46:52.165-EDT INFO  The following profiles are active: local
+2020-04-06 17:46:55.058-EDT INFO  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-06 17:46:55.250-EDT INFO  Finished Spring Data repository scanning in 173ms. Found 1 JPA repository interfaces.
+2020-04-06 17:47:05.950-EDT INFO  Tomcat initialized with port(s): 8080 (http)
+2020-04-06 17:47:06.114-EDT INFO  Starting service [Tomcat]
+2020-04-06 17:47:06.120-EDT INFO  Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-06 17:47:07.216-EDT INFO  Initializing Spring embedded WebApplicationContext
+2020-04-06 17:47:07.217-EDT INFO  Root WebApplicationContext: initialization completed in 14840 ms
+2020-04-06 17:47:12.210-EDT INFO  HikariPool-1 - Starting...
+2020-04-06 17:47:23.489-EDT INFO  HikariPool-1 - Start completed.
+2020-04-06 17:47:23.997-EDT INFO  HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-04-06 17:47:24.587-EDT INFO  HHH000412: Hibernate Core {5.3.15.Final}
+2020-04-06 17:47:24.591-EDT INFO  HHH000206: hibernate.properties not found
+2020-04-06 17:47:25.217-EDT INFO  HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-04-06 17:47:25.776-EDT INFO  HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-04-06 17:47:28.516-EDT INFO  Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-06 17:47:32.838-EDT INFO  Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-06 17:47:33.231-EDT WARN  spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-06 17:47:35.647-EDT INFO  Tomcat started on port(s): 8080 (http) with context path '/v01/api'
+2020-04-06 17:47:35.654-EDT INFO  Started EmployeeApplication in 45.498 seconds (JVM running for 47.22)
+2020-04-06 17:47:54.477-EDT INFO  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-06 17:47:54.478-EDT INFO  Initializing Servlet 'dispatcherServlet'
+2020-04-06 17:47:54.502-EDT INFO  Completed initialization in 24 ms
+2020-04-06 17:47:55.006-EDT WARN  Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.friends.employee.beans.Employee> com.friends.employee.controller.EmployeeController.addEmployee(com.friends.employee.beans.Employee) throws java.lang.Exception: [Field error in object 'employee' on field 'name': rejected value [null]; codes [NotBlank.employee.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.name,name]; arguments []; default message [name]]; default message [Employee name shouldn't be empty]] ]
+2020-04-06 17:51:33.449-EDT WARN  Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.friends.employee.beans.Employee> com.friends.employee.controller.EmployeeController.addEmployee(com.friends.employee.beans.Employee) throws java.lang.Exception with 2 errors: [Field error in object 'employee' on field 'name': rejected value [null]; codes [NotBlank.employee.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.name,name]; arguments []; default message [name]]; default message [Employee name shouldn't be empty]] [Field error in object 'employee' on field 'age': rejected value [19]; codes [Min.employee.age,Min.age,Min.java.lang.Integer,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [employee.age,age]; arguments []; default message [age],20]; default message [Employee's age should be atleast 20 years old ]] ]
+2020-04-06 17:55:48.687-EDT INFO  Starting EmployeeApplication on WKSWUMTV6079 with PID 48268 (C:\Users\312199\Downloads\employee\target\classes started by 312199 in C:\Users\312199\Downloads\employee)
+2020-04-06 17:55:48.697-EDT DEBUG Running with Spring Boot v2.1.13.RELEASE, Spring v5.1.14.RELEASE
+2020-04-06 17:55:48.697-EDT INFO  The following profiles are active: local
+2020-04-06 17:55:51.798-EDT INFO  Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-06 17:55:52.008-EDT INFO  Finished Spring Data repository scanning in 191ms. Found 1 JPA repository interfaces.
+2020-04-06 17:55:56.408-EDT INFO  Tomcat initialized with port(s): 8080 (http)
+2020-04-06 17:55:56.488-EDT INFO  Starting service [Tomcat]
+2020-04-06 17:55:56.489-EDT INFO  Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-06 17:55:57.309-EDT INFO  Initializing Spring embedded WebApplicationContext
+2020-04-06 17:55:57.309-EDT INFO  Root WebApplicationContext: initialization completed in 8448 ms
+2020-04-06 17:55:58.985-EDT INFO  HikariPool-1 - Starting...
+2020-04-06 17:55:59.804-EDT INFO  HikariPool-1 - Start completed.
+2020-04-06 17:56:00.267-EDT INFO  HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-04-06 17:56:00.513-EDT INFO  HHH000412: Hibernate Core {5.3.15.Final}
+2020-04-06 17:56:00.526-EDT INFO  HHH000206: hibernate.properties not found
+2020-04-06 17:56:01.224-EDT INFO  HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-04-06 17:56:01.890-EDT INFO  HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-04-06 17:56:04.259-EDT INFO  Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-06 17:56:07.672-EDT INFO  Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-06 17:56:08.388-EDT WARN  spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-06 17:56:13.034-EDT INFO  Tomcat started on port(s): 8080 (http) with context path '/v01/api'
+2020-04-06 17:56:13.085-EDT INFO  Started EmployeeApplication in 26.851 seconds (JVM running for 28.657)
+2020-04-06 17:56:52.978-EDT INFO  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-06 17:56:52.978-EDT INFO  Initializing Servlet 'dispatcherServlet'
+2020-04-06 17:56:52.994-EDT INFO  Completed initialization in 15 ms
