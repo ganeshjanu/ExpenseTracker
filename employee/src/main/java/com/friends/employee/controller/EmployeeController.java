@@ -32,13 +32,13 @@ public class EmployeeController {
 	}
 	
 	@GetMapping(value="/find")
-	public ResponseEntity<Employee> getEmployee(@Valid @NotBlank(message ="Employee Id shouldn't be blank") @RequestParam Long empId) throws Exception {
-		Employee emp= employeeServices.findEmployeeById(empId);
+	public ResponseEntity<Employee> getEmployee( @RequestParam(value = "empId")   @NotBlank  Long employeeId) throws Exception {
+		Employee emp= employeeServices.findEmployeeById(employeeId);
 		return ResponseEntity.ok().body(emp);
 	}
 	
 	@DeleteMapping(value="/delete")
-	public ResponseEntity<Map<String, Boolean>> deleteEmployee(@NotBlank @RequestParam(name = "empId") Long employeeId) throws Exception {
+	public ResponseEntity<Map<String, Boolean>> deleteEmployee(@RequestParam(name = "empId") @NotBlank  Long employeeId) throws Exception {
 		Map<String, Boolean> response = employeeServices.deleteEmployeeById(employeeId);
 		return ResponseEntity.ok().body(response);
 	}
