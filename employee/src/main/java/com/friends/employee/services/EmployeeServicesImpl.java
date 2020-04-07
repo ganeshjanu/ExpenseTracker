@@ -25,6 +25,11 @@ public class EmployeeServicesImpl implements EmployeeServices {
 	public Employee findEmployeeById(Long empId) throws ResourceNotFoundException {
 		return employeeRepository.findById(empId).orElseThrow(() -> new ResourceNotFoundException("Employee Id : " + empId));
 	}
+	
+	@Override
+	public Employee findEmployeeByName(String empName) throws ResourceNotFoundException {
+		return employeeRepository.findByName(empName).orElseThrow(() -> new ResourceNotFoundException("Employee Name : " + empName));
+	}
 
 	@Override
 	public Map<String, Boolean> deleteEmployeeById(Long empId) throws ResourceNotFoundException {

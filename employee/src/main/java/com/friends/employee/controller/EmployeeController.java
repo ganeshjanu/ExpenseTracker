@@ -31,9 +31,15 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(emp);
 	}
 	
-	@GetMapping(value="/find")
+	@GetMapping(value="/find", params = {"empId"} )
 	public ResponseEntity<Employee> getEmployee( @RequestParam(value = "empId")   @NotBlank  Long employeeId) throws Exception {
 		Employee emp= employeeServices.findEmployeeById(employeeId);
+		return ResponseEntity.ok().body(emp);
+	}
+	
+	@GetMapping(value="/find", params = {"empName"})
+	public ResponseEntity<Employee> getEmployee( @RequestParam(value = "empName")   @NotBlank  String employeeName) throws Exception {
+		Employee emp= employeeServices.findEmployeeByName(employeeName);
 		return ResponseEntity.ok().body(emp);
 	}
 	

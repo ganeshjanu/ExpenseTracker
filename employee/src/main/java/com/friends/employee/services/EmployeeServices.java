@@ -11,6 +11,8 @@ public interface EmployeeServices {
 	
 	public Employee findEmployeeById(Long empId) throws Exception;
 	
+	public Employee findEmployeeByName(String empName) throws Exception;
+	
 	public Map<String, Boolean> deleteEmployeeById(Long empId) throws Exception;
 
 }
