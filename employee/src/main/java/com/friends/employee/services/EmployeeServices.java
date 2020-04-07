@@ -9,6 +9,8 @@ public interface EmployeeServices {
 	
 	public Employee addEmployee(Employee employee) throws Exception;
 	
+	public Employee updateEmployee(Employee employee) throws Exception;
+	
 	public Employee findEmployeeById(Long empId) throws Exception;
 	
 	public Employee findEmployeeByName(String empName) throws Exception;

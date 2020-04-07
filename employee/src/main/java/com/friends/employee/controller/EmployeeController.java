@@ -49,5 +49,11 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(response);
 	}
 	
+	@PostMapping(value="/update")
+	public ResponseEntity<Employee> updateEmployee(@Valid @RequestBody Employee employee) throws Exception {
+		Employee emp= employeeServices.updateEmployee(employee);
+		return ResponseEntity.ok().body(emp);
+	}
+	
 
 }
