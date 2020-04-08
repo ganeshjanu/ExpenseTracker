@@ -42,8 +42,15 @@ public class EmployeeServicesImpl implements EmployeeServices {
 
 	@Override
 	public Employee updateEmployee(Employee employee) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		//Check if the employee is available
+		Employee existingEmployee = employeeRepository.findById(employee.getId()).orElseThrow(() -> new ResourceNotFoundException("Employee not available with the following Employee Id : " + employee.getId()));
+		
+		Employee updatedEmployee = null;
+		if(existingEmployee != null) {
+			updatedEmployee = employeeRepository.saveAndFlush(employee);
+		}
+		
+		return updatedEmployee;
 	}
 
 }
