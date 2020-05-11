@@ -10,7 +10,7 @@ ARG JAR_FILE=/var/jenkins_home/workspace/test6-pipeline/employee/target/employee
 #WORKDIR /opt/app
 
 # cp target/spring-boot-web.jar /opt/app/employee.jar
-COPY ${JAR_FILE} employee.jar
+COPY /var/jenkins_home/workspace/test6-pipeline/employee/target/employee-0.0.1-SNAPSHOT.jar employee.jar
 
 # java -jar /opt/app/employee.jar
 ENTRYPOINT ["java","-jar","employee.jar"]
