@@ -7,7 +7,7 @@ FROM openjdk:8-jdk-alpine
 ARG JAR_FILE=target/employee-0.0.1-SNAPSHOT.jar
 
 # cd /opt/app
-WORKDIR /opt/app
+#WORKDIR /opt/app
 
 # cp target/spring-boot-web.jar /opt/app/employee.jar
 COPY ${JAR_FILE} employee.jar
