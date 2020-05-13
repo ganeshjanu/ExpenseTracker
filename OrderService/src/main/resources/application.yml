@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: local
+
+server: 
+ servlet:
+    context-path: /v01/api/order
+
+management:
+  endpoints:    web:       exposure:        include: '*'
+  endpoint:    health:      show-details: always
+
+resilience4j.circuitbreaker:
+  instances:
+    orderservice:
+      registerHealthIndicator: true
+      ringBufferSizeInClosedState: 5
+      waitDurationInOpenState: 60s
+      ringBufferSizeInHalfOpenState: 5
+      failureRateThreshold: 50
+      recordExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - java.io.IOException
+        - java.util.concurrent.TimeoutException
+        - org.springframework.web.client.ResourceAccessException
+      ignoreExceptions:
+          - com.friends.order.exceptions.ServiceException
