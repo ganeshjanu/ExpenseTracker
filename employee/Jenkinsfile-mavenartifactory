@@ -1,0 +1,26 @@
+node {
+    stage('GIT Checkout'){
+        git branch: 'ganesh', credentialsId: 'git-cred', url: 'https://github.com/ganeshjanu/ExpenseTracker'
+    
+            }
+    stage('MVN Build'){
+ 
+rtServer = Artifactory.server 'Artifactory'
+rtMaven = Artifactory.newMavenBuild()
+rtMaven.tool = 'Maven-3.6.3'
+rtMaven.deployer releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: rtServer
+rtMaven.deployer.deployArtifacts = true
+buildInfo = Artifactory.newBuildInfo()
+def mvnHome =  tool name: 'Maven-3.6.3', type: 'maven'
+def mvnCMD = "${mvnHome}/bin/mvn"
+rtMaven.run pom: 'employee/pom.xml', goals: 'clean install', buildInfo: buildInfo
+    }
+    
+          stage('Sonar'){
+   def mvnHome = tool name: 'Maven-3.6.3', type: 'maven'
+          def mvnCMD = "${mvnHome}/bin/mvn"
+          withSonarQubeEnv('sonarqube'){
+          sh "${mvnCMD} sonar:sonar"     
+}
+    
+}
