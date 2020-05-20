@@ -5,7 +5,7 @@ node {
         mail bcc: '', body: '''Hi - Email alert for Jenkins Expense Tracker job.
         **** GIT Checkout success! ***
         Thanks,
-        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - GIT Checkout ', to: 'ganeshjanu@gmail.com , Shailesh.Budhaner@westernunion.com , Ganesh.Sundaresan@westernunion.com ,Sateesh.Bandi@westernunion.com, Karthikeyan.ravichandran@wu.com'
+        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - GIT Checkout ', to: 'abc@gmail.com , def.Budhaner@westernunion.com , efg.Sundaresan@westernunion.com ,ijk.Bandi@westernunion.com, lmn.ravichandran@wu.com'
         
         
         
@@ -18,8 +18,7 @@ node {
         mail bcc: '', body: '''Hi - Email alert for Jenkins Expense Tracker job.
         **** MVN Build success! ***
         Thanks,
-        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - MVN Build ', to: 'ganeshjanu@gmail.com , Shailesh.Budhaner@westernunion.com , Ganesh.Sundaresan@westernunion.com ,Sateesh.Bandi@westernunion.com, Karthikeyan.ravichandran@wu.com'
-        
+        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - GIT Checkout ', to: 'abc@gmail.com , def.Budhaner@westernunion.com , efg.Sundaresan@westernunion.com ,ijk.Bandi@westernunion.com, lmn.ravichandran@wu.com'        
         
         
         
@@ -29,8 +28,7 @@ node {
         mail bcc: '', body: '''Hi - Email alert for Jenkins Expense Tracker job.
         **** Build docker image success! ***
         Thanks,
-        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - Build docker image', to: 'ganeshjanu@gmail.com , Shailesh.Budhaner@westernunion.com , Ganesh.Sundaresan@westernunion.com ,Sateesh.Bandi@westernunion.com, Karthikeyan.ravichandran@wu.com'
-        
+        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - GIT Checkout ', to: 'abc@gmail.com , def.Budhaner@westernunion.com , efg.Sundaresan@westernunion.com ,ijk.Bandi@westernunion.com, lmn.ravichandran@wu.com'        
         
         
     }
@@ -43,8 +41,7 @@ node {
         mail bcc: '', body: '''Hi - Email alert for Jenkins Expense Tracker job.
         **** push docker image success! ***
         Thanks,
-        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - push docker image', to: 'ganeshjanu@gmail.com , Shailesh.Budhaner@westernunion.com , Ganesh.Sundaresan@westernunion.com ,Sateesh.Bandi@westernunion.com, Karthikeyan.ravichandran@wu.com'
-           
+        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - GIT Checkout ', to: 'abc@gmail.com , def.Budhaner@westernunion.com , efg.Sundaresan@westernunion.com ,ijk.Bandi@westernunion.com, lmn.ravichandran@wu.com'           
         
     }
       stage('remove docker image'){
