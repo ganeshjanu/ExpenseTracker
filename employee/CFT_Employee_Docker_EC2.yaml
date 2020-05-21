@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Template for the blog post about order of resource creations. on US-EAST-1 region
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0323c3dd2da7fb37d
+      InstanceType: t2.micro
+      AvailabilityZone: us-east-1b
+      KeyName:  AnsibleKeyPair
+      SecurityGroupIds:
+        -
+          Ref: SecurityGroup
+      UserData: !Base64
+        'Fn::Join':
+            - |+
+            
+            - - '#!/bin/bash'
+              - sudo yum update -y
+              - sudo yum install docker -y
+              - sudo service docker start
+              - sudo docker pull ganeshjanu/employee-docker:0.1
+              - sudo docker run -p 8080:8080 ganeshjanu/employee-docker:0.1
+
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for the blog post
+      SecurityGroupIngress:
+        -
+          IpProtocol: "tcp"
+          FromPort: 80
+          ToPort: 80
+          CidrIp: "0.0.0.0/0"
+          
+        -
+          IpProtocol: "tcp"
+          FromPort: 22
+          ToPort: 22
+          CidrIp: "0.0.0.0/0"
+        -
+          IpProtocol: "tcp"
+          FromPort: 8080
+          ToPort: 8080
+          CidrIp: "0.0.0.0/0"          

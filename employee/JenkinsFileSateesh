@@ -1,0 +1,42 @@
+ node
+ {
+    stage('GIT Checkout')
+ {
+     git branch: 'ganesh', credentialsId: 'git-cred', url: 'https://github.com/ganeshjanu/ExpenseTracker'
+    }
+    stage('MVN Build')
+ {
+        def mvnHome = tool name: 'MAVEN', type: 'maven'
+        def mvnCMD = "${mvnHome}/bin/mvn"
+        sh "${mvnCMD} -f employee/pom.xml clean package"
+    }         
+    stage('Build docker image')
+ {
+        sh 'docker build -f employee/Dockerfile -t friends-employee-docker.jfrog.io/employee-app:1.0.1 ./employee'
+    }
+  /* 
+   stage('Push docker image to repo')
+    {
+        withCredentials([string(credentialsId: 'dockercred', variable: 'dockercred')])
+        {
+           sh "docker login -u satbbus -p 5RGMxMyBZkFCRyR"
+        }
+   
+        sh 'docker push satbbus/employee-app:1.0.1'
+    }
+*/
+    stage('Push docker image to Jfrog'){
+	withCredentials([usernamePassword(credentialsId: 'jfrogcred', passwordVariable: 'jfrogpwd', usernameVariable: 'jfroguser')]) {
+     	sh "docker login -u ${jfroguser} -p ${jfrogpwd} friends-employee-docker.jfrog.io"
+     	sh 'docker push friends-employee-docker.jfrog.io/employee-app:1.0.1'
+	}
+     
+    }
+
+
+
+
+   stage('remove docker image'){
+        sh 'docker rmi -f friends-employee-docker.jfrog.io/employee-app:1.0.1'
+    } 
+   }
