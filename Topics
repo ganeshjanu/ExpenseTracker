@@ -1,0 +1,32 @@
+       TOPICS
+
+ 
+
+Core Java
+Collections, Generics, MultiThreading, Functional Programming, Lambda Expressions, Streams, Exceptions, Async - CompletableFuture, GC, Memory Management
+Practice with simple java programs to clear first round of coding.
+SpringBoot
+Auto Configuration, AOP, DI, Actuator, IOC, Security, JPA (one-many,one-one,one-many),log4j,slf4j, Annotations, Restful vs SOAP, RestTemplate vs Web Client( one demo from Ganesh) , https/ssl for both client and server
+TDD - Junit (Unit testing/Integration Testing)
+Design Patterns (Singleton, Factory, Builder, Circuit Breaker[Resilience4J], Observer)
+Springboot and Couchbase
+Springboot and Kafka
+Springboot Asynchronous programming
+Jasypt
+Springboot Security with oAuth.
+Docker
+Jenkins – CI/CD Pipeline
+SonarCube & CheckMarx
+Swagger
+Postman + JMeter (Load testing, endurance testing)
+Artifactory (Artifacts -- jar/docker/any binary) - ECR/Docker/Jfrog
+Angular (components, router, modules) @CORS
+Reactive Programming -- Async + Even Driven + higher order functions (Demo from Ganesh )
+Slueth (need a demo)
+Make one project ready as a recent project worked on migration from legacy to cloud.
+AWS Technologies - Familiar with all concepts learnt during certification
+EC2 bootstrap scripts, CFT, ECS -EC2/Fargate, S3, API Gateway (concepts) , Load Balancer, Deployment schemes, secret manager, system parameter store, Logging from ECS.
+SQL concepts, queries like , 2nd highest salary, 5 lowest income etc.
+Spring Cloud Config. – (pending from Shailesh).
+Spring cloud bootstrap properties on the AWS.
+ 

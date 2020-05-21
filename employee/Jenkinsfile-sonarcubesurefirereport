@@ -1,0 +1,21 @@
+node {
+    stage('GIT Checkout'){
+        git branch: 'ganesh', credentialsId: 'git-cred', url: 'https://github.com/ganeshjanu/ExpenseTracker'
+    
+            }
+            
+            stage('MVN Build'){
+       def mvnHome = tool name: 'Maven-3.6.3', type: 'maven'
+        def mvnCMD = "${mvnHome}/bin/mvn"
+        sh "${mvnCMD} -f employee/pom.xml clean package surefire-report:report"     
+}
+  
+          stage('Sonar'){
+   def mvnHome = tool name: 'Maven-3.6.3', type: 'maven'
+          def mvnCMD = "${mvnHome}/bin/mvn"
+          withSonarQubeEnv('sonarqube'){
+          sh "${mvnCMD} -f employee/pom.xml sonar:sonar"     
+}
+    
+}
+}
