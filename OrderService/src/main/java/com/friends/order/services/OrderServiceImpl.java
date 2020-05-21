@@ -12,7 +12,7 @@ import com.friends.order.exceptions.ServiceException;
 import com.friends.order.repository.OrderRepository;
 
 @Service("ordersvc")
-@Profile("default")
+@Profile("internal")
 public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
