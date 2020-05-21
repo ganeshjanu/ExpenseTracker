@@ -1,0 +1,73 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Employee Service"
+  },
+  "host": "localhost:8080",
+  "basePath": "/v01/api/employee",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/add": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/employee"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful",
+            "schema": {
+              "$ref": "#/definitions/employee"
+            }
+          }
+        },
+        "summary": "Add the employee",
+        "operationId": "addEmployee"
+      }
+    }
+  },
+  "definitions": {
+    "employee": {
+      "type": "object",
+      "required": [
+        "name",
+        "id",
+        "age"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of an employee"
+        },
+        "id": {
+          "type": "integer",
+          "description": "Unique Identification of an employee"
+        },
+        "age": {
+          "type": "integer",
+          "description": "Age of an employee",
+          "minimum": 20
+        },
+        "salary": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

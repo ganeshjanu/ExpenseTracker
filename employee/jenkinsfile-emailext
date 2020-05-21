@@ -1,0 +1,55 @@
+node {
+    stage('GIT Checkout'){
+        git branch: 'ganesh', credentialsId: 'git-cred', url: 'https://github.com/ganeshjanu/ExpenseTracker'
+    
+        mail bcc: '', body: '''Hi - Email alert for Jenkins Expense Tracker job.
+        **** GIT Checkout success! ***
+        Thanks,
+        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - GIT Checkout ', to: 'abc@gmail.com , def.Budhaner@westernunion.com , efg.Sundaresan@westernunion.com ,ijk.Bandi@westernunion.com, lmn.ravichandran@wu.com'        
+        
+        
+        
+    }
+    stage('MVN Build'){
+        def mvnHome = tool name: 'Maven-3.6.3', type: 'maven'
+        def mvnCMD = "${mvnHome}/bin/mvn"
+        sh "${mvnCMD} -f employee/pom.xml clean package surefire-report:report"
+        mail bcc: '', body: '''Hi - Email alert for Jenkins Expense Tracker job.
+        **** MVN Build success! ***
+        Thanks,
+        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - GIT Checkout ', to: 'abc@gmail.com , def.Budhaner@westernunion.com , efg.Sundaresan@westernunion.com ,ijk.Bandi@westernunion.com, lmn.ravichandran@wu.com'        
+        
+        
+        
+    }
+    stage('Build docker image'){
+        sh 'docker build -f employee/Dockerfile -t karthxyz/employee-app:1.0.0 ./employee'
+        mail bcc: '', body: '''Hi - Email alert for Jenkins Expense Tracker job.
+        **** Build docker image success! ***
+        Thanks,
+        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - GIT Checkout ', to: 'abc@gmail.com , def.Budhaner@westernunion.com , efg.Sundaresan@westernunion.com ,ijk.Bandi@westernunion.com, lmn.ravichandran@wu.com'        
+        
+        
+    }
+    stage('Push docker image'){
+        withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerPwd')]) {
+        sh "docker login -u karthxyz -p ${dockerpwd}"
+        
+        }
+        sh 'docker push karthxyz/employee-app:1.0.0'
+        mail bcc: '', body: '''Hi - Email alert for Jenkins Expense Tracker job.
+        **** push docker image success! ***
+        Thanks,
+        GSSK''', cc: '', from: '', replyTo: '', subject: 'Jenkins Expense tracker job - GIT Checkout ', to: 'abc@gmail.com , def.Budhaner@westernunion.com , efg.Sundaresan@westernunion.com ,ijk.Bandi@westernunion.com, lmn.ravichandran@wu.com'           
+        
+    }
+      stage('remove docker image'){
+     emailext (to: 'abc@gmail.com , def.Budhaner@westernunion.com , ghi.Sundaresan@westernunion.com ,ijk.Bandi@westernunion.com, lmn.ravichandran@wu.com', 
+      replyTo: '', subject: "Jenkins Expense tracker job - surefire-report", 
+      body: readFile("employee/target/site/surefire-report.html"), 
+      mimeType: 'text/html')
+ 
+        sh 'docker rmi -f karthxyz/employee-app:1.0.0'
+    }
+    
+}

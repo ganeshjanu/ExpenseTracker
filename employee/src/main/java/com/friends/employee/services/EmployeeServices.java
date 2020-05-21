@@ -2,19 +2,21 @@ package com.friends.employee.services;
 
 import java.util.Map;
 
-import com.friends.employee.beans.Employee;
+import com.friends.employee.beans.EmployeeForm;
+import com.friends.employee.exceptions.AppException;
+import com.friends.employee.exceptions.ResourceNotFoundException;
 
-//Test comment
+
 public interface EmployeeServices {
 	
-	public Employee addEmployee(Employee employee) throws Exception;
+	public EmployeeForm addEmployee(EmployeeForm employee) throws AppException ;
 	
-	public Employee updateEmployee(Employee employee) throws Exception;
+	public EmployeeForm updateEmployee(EmployeeForm employee) throws  AppException;
 	
-	public Employee findEmployeeById(Long empId) throws Exception;
+	public EmployeeForm findEmployeeById(Long empId) throws ResourceNotFoundException, AppException;
 	
-	public Employee findEmployeeByName(String empName) throws Exception;
+	public EmployeeForm findEmployeeByName(String empName) throws ResourceNotFoundException, AppException;
 	
-	public Map<String, Boolean> deleteEmployeeById(Long empId) throws Exception;
+	public Map<String, Boolean> deleteEmployeeById(Long empId) throws ResourceNotFoundException;
 
 }

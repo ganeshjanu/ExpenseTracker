@@ -7,22 +7,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
 	
-	@NotBlank(message = "Employee name shouldn't be empty")
-	@Column(name="name", nullable = false)
+	
+	@Column(name="name", nullable = false )
 	private String name;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Min(value = 20, message = "Employee's age should be atleast 20 years old ")
 	@Column(name="age", nullable = false)
 	private Integer age;
 	
@@ -89,6 +87,11 @@ public class Employee {
 		} else {
 			return false;
 		}
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.id.intValue();
 	}
 
 }
