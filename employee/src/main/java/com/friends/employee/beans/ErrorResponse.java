@@ -51,9 +51,11 @@ public class ErrorResponse
 		}
 	}
     
+
 	@Override
 	public int hashCode() {
 		return message.hashCode();
 	}
+
 
 }
