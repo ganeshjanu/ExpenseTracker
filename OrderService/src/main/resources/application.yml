@@ -1,6 +1,8 @@
 spring:
   profiles:
-    active: local
+    active: external
+  application:
+    name: OrderService
 
 server: 
  servlet:

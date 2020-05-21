@@ -1,0 +1,10 @@
+pipeline {
+agent any
+    stages {
+        stage('Cloudformation') {
+            steps {
+            sh "aws cloudformation create-stack --stack-name s3bucket --template-body file://CFT_Employee_Docker_EC2.yaml --region 'us-east-1'"
+              }
+             }
+            }
+            }
