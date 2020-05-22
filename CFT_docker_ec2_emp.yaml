@@ -7,7 +7,7 @@ Resources:
       ImageId: ami-0323c3dd2da7fb37d
       InstanceType: t2.micro
       AvailabilityZone: us-east-1b
-      KeyName:  jekins-docker
+      KeyName:  homepairkey
       SecurityGroupIds:
         -
           Ref: SecurityGroup
@@ -19,8 +19,8 @@ Resources:
               - sudo yum update -y
               - sudo yum install docker -y
               - sudo service docker start
-              - sudo docker pull ganeshjanu/employee-docker:0.1
-              - sudo docker run -p 8080:8080 ganeshjanu/employee-docker:0.1
+              - sudo docker pull karthxyz/employee-docker
+              - sudo docker run -p 8080:8080 karthxyz/employee-docker
 
   SecurityGroup:
     Type: AWS::EC2::SecurityGroup

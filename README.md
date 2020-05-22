@@ -17,5 +17,6 @@
     3. Service class loading - Spring profile (OrderServiceImpl vs OrderServicePaymentImpl)
     4. Application properties in YAML format
     5. Boiler plate code removed in bean/model classes - Lombok
+    6. WebClient with HTTP Trace
     
     

@@ -1,0 +1,41 @@
+node {
+  
+            stage('GIT Checkout')
+    {
+       git branch: 'ganesh', credentialsId: 'gitcred', url: 'https://github.com/ganeshjanu/ExpenseTracker'    
+            }
+    stage('MVN Build')
+    {
+        def mvnHome = tool name: 'Maven-3.6.3', type: 'maven'
+        def mvnCMD = "${mvnHome}/bin/mvn"
+        sh "${mvnCMD} -f employee/pom.xml clean package surefire-report:report"     
+        
+    }
+  stage('Build docker image')
+  {
+        sh 'docker build -f employee/Dockerfile -t karthxyz/employee-app:1.0.0 ./employee'
+  
+        
+    }
+    stage('Push docker image')
+    {
+       withCredentials([usernamePassword(credentialsId: 'gitcred', passwordVariable: 'dockerpwd', usernameVariable: 'dockerun')]) 
+       {
+        sh "docker login -u karthxyz -p ravi@1950"
+         sh 'docker push karthxyz/employee-app:1.0.0'
+        
+        }
+       
+       
+    }
+      stage('remove local docker image')
+      {
+        sh 'docker rmi -f karthxyz/employee-app:1.0.0'
+    }
+      stage('Cloudformation') {
+           
+            sh "aws cloudformation create-stack --stack-name s3bucket --template-body file://CFT_Employee_Docker_EC2.yaml --region 'us-east-1'"
+
+      }
+        
+    }
