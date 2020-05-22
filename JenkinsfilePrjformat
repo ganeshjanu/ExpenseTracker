@@ -1,0 +1,114 @@
+ import org.jenkinsci.plugins.workflow.steps.FlowInterruptedException
+ node
+ 
+ {
+ def branch_name = 'ganesh'
+ def git_url = 'https://github.com/ganeshjanu/ExpenseTracker.git'
+ def checkout_timeout = 300
+ def package_timeout = 300
+ def builddockerimage_timeout = 300
+ def pushdockerimage_timeout = 300
+ def docker_initial_build_tag = 'employee-app'
+ def docker_new_build_tag = 'karthxyz/employee-app'
+ def buildtag = env.BUILD_NUMBER
+ def stackname = 'employeestack'
+ 
+ 
+ currentBuild.result = 'SUCCESS'
+
+ if(currentBuild.result == "SUCCESS"){
+        try{
+            timeout(time: checkout_timeout, unit: 'SECONDS') {
+                stage('GIT Checkout'){
+                    retry(3){
+                        git branch: branch_name,
+                        credentialsId: 'gitcred',
+                        url: git_url
+                    }
+                }
+            }
+        }catch (FlowInterruptedException timeout_error){
+            currentBuild.result = 'ABORTED'
+        }
+        catch(Exception err){
+            currentBuild.result = 'FAILURE'
+        }
+    }
+	//Maven Build - Package
+	if(currentBuild.result == "SUCCESS"){
+        try{
+            timeout(time: package_timeout, unit: 'SECONDS') {
+                stage('Maven Build - Package'){
+                    retry(3) {
+                        def mvnHome =  tool name: 'Maven-3.6.3', type: 'maven' 
+                        def mvnCMD = "${mvnHome}/bin/mvn"
+                        sh "${mvnCMD} -f employee/pom.xml clean package  checkstyle:checkstyle surefire-report:report"
+                    }
+                }
+            }
+        } catch (FlowInterruptedException timeout_error){
+            currentBuild.result = 'ABORTED'
+        }
+        catch(Exception err){
+            currentBuild.result = 'FAILURE'
+        }
+    }
+	//Docker Build
+	if(currentBuild.result == "SUCCESS"){
+        try{
+            timeout(time: builddockerimage_timeout, unit: 'SECONDS') {
+                stage('Build Docker Image'){
+                    retry(3) {
+                        sh "docker build -f employee/Dockerfile -t ${docker_initial_build_tag}:${buildtag} ./employee"
+                        sh "docker tag ${docker_initial_build_tag}:${buildtag} ${docker_new_build_tag}:${buildtag}"
+                    }
+                }
+            }
+        } catch (FlowInterruptedException timeout_error){
+            currentBuild.result = 'ABORTED'
+        }
+        catch(Exception err){
+            currentBuild.result = 'FAILURE'
+        }
+    }	
+	//Docker Push
+	if(currentBuild.result == "SUCCESS"){
+        try{
+            timeout(time: pushdockerimage_timeout, unit: 'SECONDS') {
+                stage('Push Docker Image'){
+                    retry(3) {
+                        withCredentials([usernamePassword(credentialsId: 'dockercred', passwordVariable: 'dockerpwd', usernameVariable: 'dockerun')]) {
+							sh "docker login -u ${dockerun} -p ${dockerpwd}"
+							sh "docker push ${docker_new_build_tag}:${buildtag}"
+						}
+                    }
+                }
+            }
+        } catch (FlowInterruptedException timeout_error){
+            currentBuild.result = 'ABORTED'
+        }
+        catch(Exception err){
+            currentBuild.result = 'FAILURE'
+        }
+    }
+	
+	//Trigger  CFT
+	if(currentBuild.result == "SUCCESS"){
+        try{
+            timeout(time: pushdockerimage_timeout, unit: 'SECONDS') {
+                stage('Trigger Cloud Formation'){
+                    retry(3) {
+							sh "aws cloudformation create-stack --stack-name ${stackname}${buildtag} --template-body file://CFT_docker_ec2_emp.yaml --region 'us-east-1'"
+						}
+                    }
+                }
+            
+        } catch (FlowInterruptedException timeout_error){
+            currentBuild.result = 'ABORTED'
+        }
+        catch(Exception err){
+            currentBuild.result = 'FAILURE'
+        }
+    }
+	
+	}
