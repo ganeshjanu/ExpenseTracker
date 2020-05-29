@@ -1,4 +1,4 @@
-package com.friends.employee.beans;
+package com.friends.employee.beans.form;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -16,19 +16,19 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class EmployeeForm {
 
-	@NotBlank(message = "Employee name shouldn't be empty")
-	private String name;
+
+	private Long id;
+	
 	@Min(value = 20, message = "Employee's age should be atleast 20 years old ")
 	private Integer age;
-	private Double salary;
-	private Long id;
-	public EmployeeForm(@NotBlank(message = "Employee name shouldn't be empty") String name,
-			@Min(value = 20, message = "Employee's age should be atleast 20 years old ") Integer age, Double salary) {
-		super();
-		this.name = name;
-		this.age = age;
-		this.salary = salary;
-	}
 	
+	@NotBlank(message = "Employee name shouldn't be empty")
+	private String name;
+	
+	private Address address;
+	
+	private Phone phone;
+	
+
 	
 }
