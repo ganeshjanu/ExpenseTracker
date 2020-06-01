@@ -33,20 +33,6 @@ public class OrderServicePaymentImpl implements OrderService {
 	@Autowired
 	private WebClient webClient;
 	
-	@Bean
-	public WebClient getWebClient() {
-		HttpClient httpClient = HttpClient.create()
-			    .tcpConfiguration(tcpClient ->
-			        tcpClient.bootstrap(bootstrap ->
-			            BootstrapHandlers.updateLogSupport(bootstrap, new HttpLoggingHandler())));
-
-		webClient = WebClient
-			    .builder()
-			    .clientConnector(new ReactorClientHttpConnector(httpClient))
-			    .build();
-		
-		return webClient;
-	}
 	
 	@Value("${paymentsvcurl}")
 	private String paymentSvcURL;
