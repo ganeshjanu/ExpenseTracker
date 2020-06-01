@@ -37,13 +37,13 @@ public class EmployeeServicesImpl implements EmployeeServices {
 			emp.setAge(employee.getAge());
 			emp.setName(employee.getName());
 			Address address = new Address(null,employee.getAddress().getMailingAddress(), null);
-			emp.setAddress(address);
+			emp.setEmpAddress(address);
 			Phone phone = new Phone(null, employee.getPhone().getMobileNum(), employee.getPhone().getHomeNum(), null);
-			phone.setEmployee(emp);
+			phone.setEmployeeInPhone(emp);
 			emp.setPhone(phone);
 			emp =  employeeRepository.saveAndFlush(emp);
 			employee.setId(emp.getId());
-			employee.getAddress().setId(emp.getAddress().getId());
+			employee.getAddress().setId(emp.getEmpAddress().getId());
 			employee.getPhone().setId(emp.getPhone().getId());
 		} catch (Exception exception) {
 			throw new AppException(exception.getMessage());
@@ -94,7 +94,7 @@ public class EmployeeServicesImpl implements EmployeeServices {
 		Phone phone = phoneRepository.findByMobileNum(mobileNum).orElseThrow(() -> new ResourceNotFoundException("Employee is not found based on mobile no : " + mobileNum));
 		EmployeeForm employeeForm = new EmployeeForm();
 		try {
-			BeanUtils.copyProperties(phone.getEmployee(), employeeForm);
+			BeanUtils.copyProperties(phone.getEmployeeInPhone(), employeeForm);
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			throw new AppException(e.getMessage());
 		}

@@ -27,7 +27,7 @@ public class Address {
 	@Column(name = "MAIL_ADDRESS")
 	private String mailingAddress;
 	
-	@OneToOne(mappedBy = "address" )
+	@OneToOne(mappedBy = "empAddress" )
 	private Employee employee;
 
 	@Override

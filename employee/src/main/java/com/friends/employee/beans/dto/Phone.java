@@ -28,5 +28,5 @@ public class Phone {
 	
 	@OneToOne
     @MapsId
-	private Employee employee;
+	private Employee employeeInPhone;
 }

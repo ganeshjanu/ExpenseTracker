@@ -34,9 +34,9 @@ public class Employee {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ID")
-	private Address address;
+	private Address empAddress;
 	
-	@OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "employeeInPhone", cascade = CascadeType.ALL)
 	private Phone phone;
 
 	@Override
