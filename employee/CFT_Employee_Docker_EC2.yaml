@@ -19,8 +19,8 @@ Resources:
               - sudo yum update -y
               - sudo yum install docker -y
               - sudo service docker start
-              - sudo docker pull ganeshjanu/employee-docker:0.1
-              - sudo docker run -p 8080:8080 ganeshjanu/employee-docker:0.1
+              - sudo docker pull karthxyz/employee-app:1.0.0
+              - sudo docker run -p 8080:8080 karthxyz/employee-app:1.0.0
 
   SecurityGroup:
     Type: AWS::EC2::SecurityGroup
