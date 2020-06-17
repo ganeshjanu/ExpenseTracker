@@ -1,11 +1,4 @@
-spring:
-  profiles:
-    active: external
-  application:
-    name: OrderService
-  boot:    admin:      client:        url: http://localhost:9090
-  
-server: 
+spring:  boot:    admin:      client:        url: http://localhost:9090server: 
  servlet:
     context-path: /v01/api/order
 
